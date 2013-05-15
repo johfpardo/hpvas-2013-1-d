@@ -20,7 +20,6 @@ import javax.persistence.Temporal;
  * @author John Fredy
  */
 @Entity
-@DiscriminatorValue("Appointment")
 public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE)

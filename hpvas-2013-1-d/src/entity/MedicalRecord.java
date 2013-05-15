@@ -20,7 +20,6 @@ import javax.persistence.OneToOne;
  * @author sneiderhc
  */
 @Entity
-@DiscriminatorValue("MedicalRecord")
 public class MedicalRecord implements Serializable {    
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE)
