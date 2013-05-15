@@ -4,7 +4,7 @@
  */
 package dao;
 
-import entity.Veterinarian;
+import Entity.Veterinarian;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -52,8 +52,8 @@ public class VeterinarianDao {
     public Veterinarian read(Veterinarian object) {
         EntityManager em = emf.createEntityManager();
         Veterinarian veterinarian = null;
-        Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE v.nombre LIKE :nombre")
-                .setParameter("nombre", object.getName());
+        Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE v.name LIKE :name")
+                .setParameter("name", object.getName());
         try {
             veterinarian = (Veterinarian) q.getResultList().get(0);
         } catch (Exception e) {

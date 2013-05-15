@@ -4,7 +4,7 @@
  */
 package dao;
 
-import entity.Person;
+import Entity.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -52,8 +52,8 @@ public class PersonDao {
     public Person read(Person object) {
         EntityManager em = emf.createEntityManager();
         Person person = null;
-        Query q = em.createQuery("SELECT p FROM Person p " + "WHERE p.nombre LIKE :nombre")
-                .setParameter("nombre", object.getName());
+        Query q = em.createQuery("SELECT p FROM Person p " + "WHERE p.name LIKE :name")
+                .setParameter("name", object.getName());
         try {
             person = (Person) q.getResultList().get(0);
         } catch (Exception e) {
