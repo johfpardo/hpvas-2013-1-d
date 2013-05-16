@@ -4,7 +4,7 @@
  */
 package dao;
 
-import entity.Appointment;
+import entity.Employee;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,11 +14,11 @@ import javax.persistence.Query;
  *
  * @author sneiderhc
  */
-public class AppointmentDao {
+public class EmployeeDao {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("HPVAS");
     
-    public void create(Appointment object) {
+    public void create(Employee object) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -32,7 +32,7 @@ public class AppointmentDao {
         }
     }
     
-    public boolean delete(Appointment object) {
+    public boolean delete(Employee object) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         boolean ret = false;
@@ -49,31 +49,30 @@ public class AppointmentDao {
         }
     }
     
-    public Appointment read(Appointment object) {
+    public Employee read(Employee object) {
         EntityManager em = emf.createEntityManager();
-        Appointment appointment = null;
-        Query q = em.createQuery("SELECT a FROM Appointment a WHERE a.AppointmentID LIKE :id")
-                .setParameter("id", object.getId());
+        Employee employee = null;
+        Query q = em.createQuery("SELECT e FROM Employee e WHERE e.login=\":login\" and e.password=\":password\"")
+                .setParameter("login", object.getLogin()).setParameter("password", object.getPassword());
         try {
-            appointment = (Appointment) q.getResultList().get(0);
+            employee = (Employee) q.getResultList().get(0);
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         } finally {
             em.close();
-            return appointment;
+            return employee;
         }
     }
     
-    public boolean update(Appointment object, Appointment newObject) {
+    public boolean update(Employee object, Employee newObject) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         boolean ret = false;
          try {
             object = read(object);
-            object.setDate(newObject.getDate());
-            object.setCharge(newObject.getCharge());
-            object.setNotes(newObject.getNotes());
+            object.setLogin(newObject.getLogin());
+            object.setPassword(newObject.getPassword());
             em.merge(object);
             em.getTransaction().commit();
             ret = true;
