@@ -10,14 +10,12 @@ package hpvas20131d;
  */
 public class MainView extends javax.swing.JFrame {
 
-    private resultsView results = new resultsView();
-    private ManageView manage = new ManageView();
-    private LoginPrincipal login = new LoginPrincipal();
     /**
      * Creates new form MainView
      */
     public MainView() {
         initComponents();
+        TabbedPane.add("Consulta", new ResultsView());
     }
 
     /**
@@ -34,10 +32,7 @@ public class MainView extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         loginB = new javax.swing.JButton();
         titleL = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        resultadosB = new javax.swing.JButton();
-        administrarB = new javax.swing.JButton();
-        mainPanel = new javax.swing.JPanel();
+        TabbedPane = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,51 +50,15 @@ public class MainView extends javax.swing.JFrame {
         titleL.setFont(new java.awt.Font("Ubuntu", 3, 36)); // NOI18N
         titleL.setText("Healthy Pets Veterinarian Association ");
 
-        jToolBar1.setRollover(true);
-
-        resultadosB.setText("Resultados");
-        resultadosB.setFocusable(false);
-        resultadosB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        resultadosB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        resultadosB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultadosBActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(resultadosB);
-
-        administrarB.setText("Administrar");
-        administrarB.setFocusable(false);
-        administrarB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        administrarB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        administrarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                administrarBActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(administrarB);
-
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TabbedPane)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(titleL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(searchTF))
@@ -127,32 +86,16 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(searchB)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void resultadosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultadosBActionPerformed
-        // TODO add your handling code here:
-        mainPanel.setVisible(false);
-        mainPanel.removeAll();
-        mainPanel.add(results);
-        mainPanel.setVisible(true);
-    }//GEN-LAST:event_resultadosBActionPerformed
-
-    private void administrarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administrarBActionPerformed
-        mainPanel.setVisible(false);
-        mainPanel.removeAll();
-        mainPanel.add(manage);
-        mainPanel.setVisible(true);    // TODO add your handling code here:
-    }//GEN-LAST:event_administrarBActionPerformed
-
     private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
         // TODO add your handling code here:
+        Login login = new Login(this, true);
         login.setVisible(true);
     }//GEN-LAST:event_loginBActionPerformed
 
@@ -191,12 +134,9 @@ public class MainView extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton administrarB;
+    private javax.swing.JTabbedPane TabbedPane;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton loginB;
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JButton resultadosB;
     private javax.swing.JButton searchB;
     private javax.swing.JTextField searchTF;
     private javax.swing.JLabel titleL;

@@ -8,12 +8,12 @@ package hpvas20131d;
  *
  * @author antonio
  */
-public class resultsView extends javax.swing.JPanel {
+public class ResultsView extends javax.swing.JPanel {
 
     /**
-     * Creates new form resultsView
+     * Creates new form ResultsView
      */
-    public resultsView() {
+    public ResultsView() {
         initComponents();
     }
 

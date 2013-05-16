@@ -4,7 +4,7 @@
  */
 package dao;
 
-import Entity.Veterinarian;
+import entity.Veterinarian;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
