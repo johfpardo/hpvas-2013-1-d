@@ -12,6 +12,7 @@ public class MainView extends javax.swing.JFrame {
 
     private resultsView results = new resultsView();
     private ManageView manage = new ManageView();
+    private LoginPrincipal login = new LoginPrincipal();
     /**
      * Creates new form MainView
      */
@@ -45,6 +46,11 @@ public class MainView extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "veterinarian", "owner", "pets", "SSN" }));
 
         loginB.setText("LogIn");
+        loginB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBActionPerformed(evt);
+            }
+        });
 
         titleL.setFont(new java.awt.Font("Ubuntu", 3, 36)); // NOI18N
         titleL.setText("Healthy Pets Veterinarian Association ");
@@ -144,6 +150,11 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.add(manage);
         mainPanel.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_administrarBActionPerformed
+
+    private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
+        // TODO add your handling code here:
+        login.setVisible(true);
+    }//GEN-LAST:event_loginBActionPerformed
 
     /**
      * @param args the command line arguments
