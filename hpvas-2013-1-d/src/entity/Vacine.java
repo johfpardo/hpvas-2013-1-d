@@ -20,9 +20,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Vacine implements Serializable{
     
-    @ManyToOne
-    private MedicalRecord medicalrecord;
-    
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     
@@ -30,6 +27,9 @@ public class Vacine implements Serializable{
     private Long id;
     private String name;
     private Long dosage;
+    
+    @ManyToOne
+    private MedicalRecord medicalRecord;
 
     public Long getId() {
         return id;
@@ -54,5 +54,13 @@ public class Vacine implements Serializable{
     public void setDosage(Long dosage) {
         this.dosage = dosage;
     }
-        
+    
+    
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
 }

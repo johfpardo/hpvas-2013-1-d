@@ -21,8 +21,9 @@ public class Veterinarian extends Person{
     private String specialities;
     private int salary;
     private String graduatedAt;
+    
     @OneToMany(mappedBy = "veterinarian")
-    private List<Appointment> appoinments;
+    private List<Appointment> appointments;
 
     public void setFocusOfPractice(String focusOfPractice) {
         this.focusOfPractice = focusOfPractice;
@@ -41,7 +42,7 @@ public class Veterinarian extends Person{
     }
 
     public void setAppoinments(List<Appointment> appoinments) {
-        this.appoinments = appoinments;
+        this.appointments = appoinments;
     }
     
 
@@ -62,7 +63,7 @@ public class Veterinarian extends Person{
     }
 
     public List<Appointment> getAppoinments() {
-        return appoinments;
+        return appointments;
     }
     
 }

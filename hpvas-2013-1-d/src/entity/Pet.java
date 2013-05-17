@@ -22,10 +22,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
-public class Pet implements Serializable{
-    
-    @OneToOne
-    private MedicalRecord medicalrecord;
+public class Pet implements Serializable{   
     
     @ManyToOne
     private Owner owner;
@@ -39,6 +36,9 @@ public class Pet implements Serializable{
     private int age;
     private Float weight;
     private String pictureUrl;
+    
+    @OneToOne
+    private MedicalRecord medicalRecord;
 
     public Long getId() {
         return id;
