@@ -31,7 +31,8 @@ public class Appointment implements Serializable {
     private String notes;
     
     @ManyToOne
-    private Veterinarian veterianarian;
+    private Veterinarian veterinarian;
+    
     @ManyToOne
     private MedicalRecord medicalRecord;
 
