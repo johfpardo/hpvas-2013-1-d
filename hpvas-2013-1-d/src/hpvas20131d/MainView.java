@@ -4,12 +4,16 @@
  */
 package hpvas20131d;
 
+import control.SearchControl;
+
 /**
  *
  * @author antonio
  */
 public class MainView extends javax.swing.JFrame {
 
+    private static SearchControl search;
+    
     /**
      * Creates new form MainView
      */
@@ -29,7 +33,7 @@ public class MainView extends javax.swing.JFrame {
 
         searchTF = new javax.swing.JTextField();
         searchB = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBoxSelect = new javax.swing.JComboBox();
         loginB = new javax.swing.JButton();
         titleL = new javax.swing.JLabel();
         TabbedPane = new javax.swing.JTabbedPane();
@@ -37,8 +41,13 @@ public class MainView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         searchB.setText("Search");
+        searchB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all", "veterinarian", "owner", "pets", "SSN" }));
+        jComboBoxSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all", "veterinarian", "owner", "pet", "SSN" }));
 
         loginB.setText("LogIn");
         loginB.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +74,7 @@ public class MainView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchB))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -84,7 +93,7 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchB)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addContainerGap())
@@ -98,6 +107,28 @@ public class MainView extends javax.swing.JFrame {
         Login login = new Login(this, true);
         login.setVisible(true);
     }//GEN-LAST:event_loginBActionPerformed
+
+    private void searchBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBActionPerformed
+        switch(jComboBoxSelect.getSelectedItem().toString()){
+            case "all":
+                search.searchAll(searchTF.getText());
+                showVeterinarian();
+                showOwner();
+                showPet();
+            case "veterinarian":
+                search.searchVeterinarian(searchTF.getText());
+                showVeterinarian();
+            case "owner":
+                search.searchOwner(searchTF.getText());
+                showOwner();
+            case "pet":
+                search.searchPet(searchTF.getText());
+                showPet();
+            case "SSN":
+                search.searchPerson(searchTF.getText());
+                showSSN();
+        }
+    }//GEN-LAST:event_searchBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,9 +164,14 @@ public class MainView extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void showVeterinarian(){}
+    public void showOwner(){}
+    public void showPet(){}
+    public void showSSN(){}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TabbedPane;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBoxSelect;
     private javax.swing.JButton loginB;
     private javax.swing.JButton searchB;
     private javax.swing.JTextField searchTF;

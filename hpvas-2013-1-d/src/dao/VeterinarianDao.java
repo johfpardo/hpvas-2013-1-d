@@ -66,6 +66,22 @@ public class VeterinarianDao {
         }
     }
     
+    public Veterinarian readSSN(String SSN) {
+        EntityManager em = emf.createEntityManager();
+        Veterinarian veterinarian = null;
+        Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE v.SSN LIKE :ssn")
+                .setParameter("ssn", SSN);
+        try {
+            veterinarian = (Veterinarian) q.getResultList().get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return veterinarian;
+        }
+    }
+    
     public List<Veterinarian> read(String word){
         EntityManager em = emf.createEntityManager();
         Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE (v.name LIKE :*name* OR v.lastName LIKE : *name*)")
@@ -73,7 +89,7 @@ public class VeterinarianDao {
         List veterinarians = q.getResultList();
         em.close();
         return veterinarians;
-    } 
+    }
     
     public boolean update(Veterinarian object,Veterinarian newObject) {
         EntityManager em = emf.createEntityManager();
