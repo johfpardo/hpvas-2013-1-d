@@ -18,6 +18,14 @@ public class SearchControl {
     List<Veterinarian> veterinarians;
     List<Pet> petsattended;
     List<Owner> owners;
+
+    public List<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(List<Owner> owners) {
+        this.owners = owners;
+    }
     List<Pet> pets;
     Person personV;
     Person personO;

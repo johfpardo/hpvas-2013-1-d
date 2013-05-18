@@ -5,6 +5,9 @@
 package hpvas20131d;
 
 import control.SearchControl;
+import entity.Owner;
+import java.security.acl.Acl;
+import java.util.ArrayList;
 
 /**
  *
@@ -166,7 +169,17 @@ public class MainView extends javax.swing.JFrame {
     }
     
     public void showVeterinarian(){}
-    public void showOwner(){}
+    public void showOwner(){
+        OwnerPanel ownerPanel = new OwnerPanel();
+        TabbedPane.add(ownerPanel);
+        ownerPanel.setVisible(false);        
+        //ownerPanel.ownerNameL.setText(search.getOwners().get(0).getName());
+        //ownerPanel.ownerLastNameL.setText(search.getOwners().get(0).getLastName());
+        //ownerPanel.ownerBirthDateL.setText(search.getOwners().get(0).getBirthDate().toString());
+        //ownerPanel.ownerBirthPlaceL.setText(search.getOwners().get(0).getBirthPlace());
+        //ownerPanel.ownerssnL.setText(search.getOwners().get(0).getSSN());
+        ownerPanel.setVisible(true);
+    }
     public void showPet(){}
     public void showSSN(){}
     // Variables declaration - do not modify//GEN-BEGIN:variables
