@@ -5,6 +5,7 @@
 package dao;
 
 import entity.Owner;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -63,6 +64,15 @@ public class OwnerDao {
             return owner;
         }
     }
+    
+    public List<Owner> read(String word){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT o FROM Owner o " + "WHERE (o.name LIKE :name OR v.lastName LIKE : name)")
+                .setParameter("name", word);
+        List owners = q.getResultList();
+        em.close();
+        return owners;
+    } 
     
     public boolean update(Owner object,Owner newObject) {
         EntityManager em = emf.createEntityManager();

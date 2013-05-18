@@ -4,9 +4,6 @@ import dao.EmployeeDao;
 import entity.Employee;
  
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.D42D42A5-512A-C868-B654-32627A3A22E4]
-// </editor-fold> 
 public class ValidateLogin {
     private EmployeeDao eD=new EmployeeDao();
     public ValidateLogin () {

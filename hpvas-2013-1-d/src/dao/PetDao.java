@@ -5,6 +5,7 @@
 package dao;
 
 import entity.Pet;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -63,6 +64,15 @@ public class PetDao {
             em.close();
             return veterinarian;
         }
+    }
+    
+    public List<Pet> read(String word){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT p FROM Pet p " + "WHERE p.name LIKE :name")
+                .setParameter("name", word);
+        List pets = q.getResultList();
+        em.close();
+        return pets;
     }
     
     public boolean update(Pet object,Pet newObject) {
