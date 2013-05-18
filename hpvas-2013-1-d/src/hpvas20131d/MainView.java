@@ -5,6 +5,7 @@
 package hpvas20131d;
 
 import control.SearchControl;
+import entity.*;
 
 /**
  *
@@ -165,7 +166,15 @@ public class MainView extends javax.swing.JFrame {
         });
     }
     
-    public void showVeterinarian(){}
+    public void showVeterinarian(){
+        String text;
+        for(Veterinarian v : search.veterinarians){
+            //do Something for show
+            for(Pet p : search.petsVeterinarian){
+                //do Something for show
+            }
+        }
+    }
     public void showOwner(){}
     public void showPet(){}
     public void showSSN(){}

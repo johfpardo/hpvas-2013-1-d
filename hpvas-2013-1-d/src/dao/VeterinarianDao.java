@@ -82,9 +82,18 @@ public class VeterinarianDao {
         }
     }
     
-    public List<Veterinarian> read(String word){
+    public List<Veterinarian> readInc(String word){
         EntityManager em = emf.createEntityManager();
         Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE (v.name LIKE :*name* OR v.lastName LIKE : *name*)")
+                .setParameter("name", word);
+        List veterinarians = q.getResultList();
+        em.close();
+        return veterinarians;
+    }
+    
+    public List<Veterinarian> readCom(String word){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE (v.name LIKE :name OR v.lastName LIKE : name)")
                 .setParameter("name", word);
         List veterinarians = q.getResultList();
         em.close();

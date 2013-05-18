@@ -4,7 +4,9 @@
  */
 package dao;
 
+import entity.Owner;
 import entity.Pet;
+import entity.Veterinarian;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -70,6 +72,24 @@ public class PetDao {
         EntityManager em = emf.createEntityManager();
         Query q = em.createQuery("SELECT p FROM Pet p " + "WHERE p.name LIKE :name")
                 .setParameter("name", word);
+        List pets = q.getResultList();
+        em.close();
+        return pets;
+    }
+    
+    public List<Pet> read(Veterinarian veterinarian){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT p FROM (Pet JOIN MedicalRecord ON (Pet.id=MedicalReport.Pet.id)) JOIN (Veterinarian JOIN Appointment ON (Veterinarian.id = Appointment.Veterinarian.id)) ON (MedicalReport.id = Appointment.MedicalReport.id) AS p " + "WHERE p.veterinarian LIKE :veterinarian")
+                .setParameter("veterinarian", veterinarian);
+        List pets = q.getResultList();
+        em.close();
+        return pets;
+    }
+    
+    public List<Pet> read(Owner owner){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT p FROM Pet p " + "WHERE p.owner LIKE :owner")
+                .setParameter("owner", owner);
         List pets = q.getResultList();
         em.close();
         return pets;
