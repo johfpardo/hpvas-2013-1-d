@@ -38,7 +38,7 @@ public class MainView extends javax.swing.JFrame {
 
         searchB.setText("Search");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "veterinarian", "owner", "pets", "SSN" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all", "veterinarian", "owner", "pets", "SSN" }));
 
         loginB.setText("LogIn");
         loginB.addActionListener(new java.awt.event.ActionListener() {

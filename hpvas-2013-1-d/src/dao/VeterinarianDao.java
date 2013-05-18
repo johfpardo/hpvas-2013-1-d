@@ -5,6 +5,7 @@
 package dao;
 
 import entity.Veterinarian;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -64,6 +65,15 @@ public class VeterinarianDao {
             return veterinarian;
         }
     }
+    
+    public List<Veterinarian> read(String word){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT v FROM Veterinarian v " + "WHERE (v.name LIKE :*name* OR v.lastName LIKE : *name*)")
+                .setParameter("name", word);
+        List veterinarians = q.getResultList();
+        em.close();
+        return veterinarians;
+    } 
     
     public boolean update(Veterinarian object,Veterinarian newObject) {
         EntityManager em = emf.createEntityManager();
