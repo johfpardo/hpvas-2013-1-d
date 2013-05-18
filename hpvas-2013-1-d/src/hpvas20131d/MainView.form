@@ -35,7 +35,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jComboBox1" max="32767" attributes="0"/>
+                              <Component id="jComboBoxSelect" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="searchB" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -62,7 +62,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="searchTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="searchB" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxSelect" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="TabbedPane" pref="441" max="32767" attributes="0"/>
@@ -78,15 +78,18 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="jComboBoxSelect">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="5">
             <StringItem index="0" value="all"/>
             <StringItem index="1" value="veterinarian"/>
             <StringItem index="2" value="owner"/>
-            <StringItem index="3" value="pets"/>
+            <StringItem index="3" value="pet"/>
             <StringItem index="4" value="SSN"/>
           </StringArray>
         </Property>

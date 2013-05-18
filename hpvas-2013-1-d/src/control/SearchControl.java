@@ -14,29 +14,43 @@ import java.util.List;
  * @author John Fredy
  */
 public class SearchControl {
+    
+    List<Veterinarian> veterinarians;
+    List<Pet> petsattended;
+    List<Owner> owners;
+    List<Pet> pets;
+    Person personV;
+    Person personO;
+    
     //ESTA Es la busquedageneral
-    public void searchAll(){
+    public void searchAll(String word){
         //Allow a search by name, displaying all of the veterinarians, pets and owners which name match the word(s) entered 
+        searchVeterinarian(word);
+        searchOwner(word);
+        searchPet(word);
     }
     //ESTA Es la busqueda por veterinario
-    public void searchVeterinarian(){
+    public void searchVeterinarian(String word){
         //Allow a search by veterinarian’s name, displaying only the veterinarians in which the name contains any of the search word(s)
         VeterinarianDao vet = new VeterinarianDao();
-        List<Veterinarian> veterinarians = vet.read("NAME word");
+        veterinarians = vet.read(word);
     }
     //ESTA Es la busqueda por propietario
-    public void searchOwner(){
+    public void searchOwner(String word){
         OwnerDao own = new OwnerDao();
-        List<Owner> owners = own.read("NAME word");
+        owners = own.read(word);
     }
     //ESTA Es la busqueda por mascota
-    public void searchPet(){
+    public void searchPet(String word){
         PetDao pt = new PetDao();
-        List<Pet> pets = pt.read("NAME word");
+        pets = pt.read(word);
     }
     //ESTA Es la busqueda por SSN
-    public void searchPerson(){
-        //PersonDao own = new PersonDao();
-        //List<Person> owners = own.read("SSN word");
+    public void searchPerson(String word){
+        
+        VeterinarianDao vet = new VeterinarianDao();
+        personV = vet.readSSN(word);
+        OwnerDao own = new OwnerDao();
+        personO = own.readSSN(word);
     }
 }
