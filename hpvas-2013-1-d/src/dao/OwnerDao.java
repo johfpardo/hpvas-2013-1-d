@@ -16,7 +16,7 @@ import javax.persistence.Query;
  * @author AntonioJose
  */
 public class OwnerDao {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("HPVAS");
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hpvas20131dPU");
     
     public void create(Owner object) {
         EntityManager em = emf.createEntityManager();
